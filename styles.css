@@ -1,0 +1,37 @@
+body {
+  background: pink;
+  color: black;
+  font-family: courier new;
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  font-size: 24pt;
+  font-weight: bold;
+}
+
+#grid {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#grid TR TD{
+  border:1px solid white;
+  background: #999999;
+  width: 36px;
+  height: 36px;
+  text-align: center;
+}
+
+#grid TR TD.clicked {
+    background: #333333;
+}
+
+#grid TR TD.bomb {
+    background: #E75480;
+}
+
+button {
+  margin: 12px;
+}
