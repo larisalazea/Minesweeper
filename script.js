@@ -37,20 +37,24 @@ function showBombs() {
 function clickCell(cell) {
   if (cell.getAttribute("is-bomb") == "true") {
     showBombs();
-    alert("You lost!");
+    document.getElementById("message").innerHTML = "You Lost !";
   } else {
     cell.className="clicked";
-    var bombsCount = 0;
-    var row = cell.parentNode.rowIndex;
-    var col = cell.cellIndex;
-    for (var i = row-1; i <= row+1; i++) {
-      for(var j = col-1; j <= col+1; j++) {
-        if (grid.rows[i].cells[j].getAttribute("is-bomb") =="true") bombsCount++;
-      }
-    }
-    cell.innerHTML = bombsCount;
+    cell.innerHTML = countBombs(cell);
     checkWin();
   }
+}
+
+function countBombs(cell){
+  var bombsCount = 0;
+  var row = cell.parentNode.rowIndex;
+  var col = cell.cellIndex;
+  for (var i = row-1; i <= row+1; i++) {
+    for(var j = col-1; j <= col+1; j++) {
+      if (grid.rows[i].cells[j].getAttribute("is-bomb") =="true") bombsCount++;
+    }
+  }
+  return bombsCount;
 }
 
 function checkWin() {
@@ -61,7 +65,7 @@ function checkWin() {
       }
   }
   if (won) {
-    alert("You Win!");
+    document.getElementById("message").innerHTML = "You Won!";
     showBombs();
   }
 }
